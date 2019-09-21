@@ -10,3 +10,32 @@
 // +----------------------------------------------------------------------
 
 // 应用公共文件
+/**
+ * 分页样式
+ */
+function pagination($obj){
+    if (!$obj) {
+        return '';
+    }
+    $params=request()->param();
+    return '<div class="imooc-app">'.$obj->appends($params)->render().'</div>';
+}
+/**
+ * 获取栏目名称
+ */
+function getCatName($catId){
+    if (!$catId) {
+        return '';
+    }
+    $cats=config('cat.list');
+    return !empty($cats[$catId])?$cats[$catId]:'';
+}
+/**
+ * 是否推荐
+ */
+function isYesNo($str){
+    return $str?'<span style="color:red">是</span>':'<span>否</span>';
+}
+/**
+ * 状态
+ */
